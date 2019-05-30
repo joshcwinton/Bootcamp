@@ -118,64 +118,64 @@ Object.grabValues = function(object) {
 
 // TESTS
 
-console.log('Test for myEach: (expect "a, b, c, d"):');
 // Test for myEach (expect a, b, c, d)
+console.log('Test for myEach: (expect "a, b, c, d"):')
 someArray.myEach(logInput);
 
-console.log('\nTest for myMap: (expect "a, a, a, a"):');
 // Test for myMap (expect a, a, a, a)
+console.log('\nTest for myMap: (expect "a, a, a, a"):');
 let mapTestArray = someArray.myMap(addA);
 mapTestArray.myEach(logInput);
 
-console.log('\nTest for myFilter: (expect "a"):');
 // Test for myFilter (expect a)
+console.log('\nTest for myFilter: (expect "a"):');
 let filterTestArray = someArray.myFilter(myTestForA);
 filterTestArray.myEach(logInput);
 
-console.log('\nTest for mySome (expect "true"):');
 // Test for mySome (expect true)
+console.log('\nTest for mySome (expect "true"):');
 console.log(someArray.mySome(myTestForA));
 
-console.log('\nTest for myEvery (expect "true")');
 // Test for myEvery (expect "true")
+console.log('\nTest for myEvery (expect "true")');
 console.log(allA.mySome(myTestForA));
 
-console.log('\nTest for myReduce (expect "aaa")')
 // Test for myReduce (expect "aaa")
+console.log('\nTest for myReduce (expect "aaa")')
 let temp = allA.myReduce(myAdd);
 console.log(temp);
 
-console.log('\nTest for myIncludes (expect "false")');
 // Test for myIncludes (expect "false")
+console.log('\nTest for myIncludes (expect "false")');
 console.log(allA.myIncludes('b'));
 
-console.log('\nTest for myIndexOf (expect "-1")');
 // Test for myIndexOf (expect "-1")
+console.log('\nTest for myIndexOf (expect "-1")');
 console.log(allA.myIndexOf('b'));
 
-console.log('\nTest for myPush (expect "a, a, a, b")');
 // Test for myPush (expect "a, a, a, b")
+console.log('\nTest for myPush (expect "a, a, a, b")');
 let allA2 = allA;
 allA2.myPush('b');
 allA2.myEach(logInput);
 
+// Test for myUnshift (expect "5")
 console.log('\nTest for myUnshift (expect "5")');
 let unshiftTestArray = ['a', 'b', 'c', 'b', 'a', 'b', 'c'];
-// Test for myUnshift (expect "5")
 console.log(unshiftTestArray.myUnshift('b'));
 
+// Test for grabKeys (expect "hey, whats")
 console.log('\nTest for grabKeys (expect "hey, whats")');
 let grabKeysObject = {
   "hey": "man",
   "whats": "up"
 };
-// Test for grabKeys (expect "hey, whats")
 console.log(Object.grabKeys(grabKeysObject));
 
+// Test for grabValues (expect "man, up")
 console.log('\nTest for grabValues (expect "man, up")');
 let grabValuesObject = {
   "hey": "man",
   "whats": "up"
 };
-// Test for grabValues (expect "man, up")
 console.log(Object.grabValues(grabValuesObject));
