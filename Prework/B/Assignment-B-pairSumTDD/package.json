@@ -1,0 +1,8 @@
+{
+  "main": "index.js",
+  "dependencies": {
+    "mocha": "6.1.4",
+    "chai": "4.2.0",
+    "chai-asserttype": "1.0.5"
+  }
+}

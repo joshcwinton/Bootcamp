@@ -1,0 +1,4 @@
+const myEach = (array) => {
+  console.log("yes");
+  
+}
