@@ -1,3 +1,6 @@
+// Josh Winton TTP Assignment 1
+// Functions are up here, some basic tests at the bottom
+
 let someArray = ['a', 'b', 'c', 'd'];
 let allA = ['a', 'a', 'a'];
 
