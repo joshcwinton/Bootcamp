@@ -1,0 +1,31 @@
+<!-- Josh Winton: BONUS -->
+<!doctype HTML>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="josh.css">
+</head>
+
+<body>
+  <h1 id="myHead">Input a Sphere's Radius and You'll Get Back It's Volume.</h1>
+  <form name="myForm" onsubmit="myFunction()">
+    <label for="radius">Radius:</label>
+    <input type="text" name="radius" id="radius">
+    <p></p>
+  </form>
+  <button type="submit" form="myForm" value="Submit" onClick="myFunction()">Submit</button>
+
+  <script>
+    myFunction = function() {
+      rad = document.getElementById("radius").value;
+      if (rad >= 0) {
+        let val = (4 / 3) * (Math.PI) * (Math.pow(rad, 3));
+        alert("Volume: " + val);
+      } else {
+        alert("Input Error");
+      }
+    }
+  </script>
+</body>
+
+</html>

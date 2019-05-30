@@ -1,0 +1,36 @@
+<!-- Josh Winton: Parts 3 and 4 -->
+<!doctype HTML>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="josh.css">
+</head>
+
+<body>
+  <h1 id="myHead">This is my Header.</h1>
+  <form name="myForm" onsubmit="myFunction()">
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username">
+    <p></p>
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email">
+    <p></p>
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password">
+  </form>
+  <button type="submit" form="myForm" value="Submit" onClick="myFunction()">Submit</button>
+
+  <script>
+    myFunction = function() {
+      pass = document.getElementById("password").value;
+      head = document.getElementById("myHead");
+      if (pass != "12345678") {
+        alert("Wrong Password!");
+      } else {
+        head.innerText = "Correct!";
+      }
+    }
+  </script>
+</body>
+
+</html>
