@@ -37,8 +37,22 @@ removeColumn = function() {
 }
 
 // Handles clicks on cells
-changeColor = function(cell) {
-  console.log("Changing color of " + cell.target);
+changeColor = function(e) {
+  console.log("Changing color of cell");
+  let cell = e.target;
   let color = document.getElementById('mySelect').value;
-  cell.target.setAttribute("bgcolor", color);
+  cell.setAttribute("bgcolor", color);
+}
+
+// Fills all uncolored cells with currently selected color
+fillUncolored = function() {
+  console.log("Filling uncolored cells with selected color");
+  let color = document.getElementById('mySelect').value;
+  let cells = document.getElementsByTagName("TD");
+  for (let i = 0; i < cells.length; i++) {
+    console.log(cells[i])
+    if(cells[i].getAttribute('bgcolor') == null){
+      cells[i].setAttribute("bgcolor", color);
+    }
+  }
 }
