@@ -39,6 +39,6 @@ removeColumn = function() {
 // Handles clicks on cells
 changeColor = function(cell) {
   console.log("Changing color of " + cell.target);
-  var color = document.getElementById('mySelect');
+  let color = document.getElementById('mySelect').value;
   cell.target.setAttribute("bgcolor", color);
 }
