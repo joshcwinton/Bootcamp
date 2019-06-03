@@ -50,9 +50,18 @@ fillUncolored = function() {
   let color = document.getElementById('mySelect').value;
   let cells = document.getElementsByTagName("TD");
   for (let i = 0; i < cells.length; i++) {
-    console.log(cells[i])
-    if(cells[i].getAttribute('bgcolor') == null){
+    if((cells[i].getAttribute('bgcolor') == null)||(cells[i].getAttribute('bgcolor') == "white")){
       cells[i].setAttribute("bgcolor", color);
     }
+  }
+}
+
+// Clear all cells
+clearAll = function() {
+  console.log("Clearing all cells");
+  let cells = document.getElementsByTagName("TD");
+  for (let i = 0; i < cells.length; i++) {
+    // console.log(cells[i].getAttribute('bgcolor'));
+    cells[i].setAttribute("bgcolor", "white");
   }
 }
