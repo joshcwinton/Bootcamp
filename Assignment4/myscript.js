@@ -6,8 +6,6 @@ let tableColumnNum = 0; // Counter for columns
 
 let mouseclick = false; // Tracks whether mouse has been clicked
 
-
-
 // Adds row to main table
 addRow = function() {
   console.log("Adding row");
@@ -20,6 +18,7 @@ addRow = function() {
     newCell.addEventListener('mouseover', enterCheck);
   }
   tableRowNum++;
+  setRowAndColumnText();
 }
 
 // Adds column to main table
@@ -33,6 +32,7 @@ addColumn = function() {
     newCell.addEventListener('mouseenter', enterCheck);
   }
   tableColumnNum++;
+  setRowAndColumnText();
 }
 
 // Remove row from main Table
@@ -41,6 +41,7 @@ removeRow = function() {
     console.log("Removing row");
     table.deleteRow(0);
     tableRowNum--;
+    setRowAndColumnText();
   } else {
     console.log("Reached minimum rows");
   }
@@ -55,6 +56,7 @@ removeColumn = function() {
       rows[i].deleteCell(0);
     }
     tableColumnNum--;
+    setRowAndColumnText();
   } else {
     console.log("Reached minimum columns");
   }
@@ -102,6 +104,14 @@ enterCheck = function(e) {
   if(mouseclick == true){
     changeColor(e);
   }
+}
+
+// Display Row and Column Number
+setRowAndColumnText = function(){
+  let rowText = document.getElementById('myrows');
+  let colText = document.getElementById('mycols');
+  rowText.innerText = "Rows: " + tableRowNum;
+  colText.innerText = "Columns: " + tableColumnNum;
 }
 
 // Adds a cell to start with
