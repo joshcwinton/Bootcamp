@@ -1,6 +1,12 @@
-let table = document.getElementById("myTable");
-let tableRowNum = 1;
-let tableColumnNum = 0;
+// Josh Winton - Assignment 4
+let table = document.getElementById("myTable"); // Reference to table
+
+let tableRowNum = 1; // Counter for rows
+let tableColumnNum = 0; // Counter for columns
+
+let mouseclick = false; // Tracks whether mouse has been clicked
+
+
 
 // Adds row to main table
 addRow = function() {
@@ -9,7 +15,9 @@ addRow = function() {
   let cells = table.rows[0].getElementsByTagName("TD");
   for (let i = 0; i < cells.length; i++) {
     let newCell = newrow.insertCell(0);
-    newCell.addEventListener('click', changeColor);
+    newCell.addEventListener('mousedown', changeColor);
+    newCell.addEventListener('mouseup', upCheck);
+    newCell.addEventListener('mouseover', enterCheck);
   }
   tableRowNum++;
 }
@@ -20,7 +28,9 @@ addColumn = function() {
   let rows = table.getElementsByTagName("TR");
   for (let i = 0; i < rows.length; i++) {
     let newCell = rows[i].insertCell(0);
-    newCell.addEventListener('click', changeColor);
+    newCell.addEventListener('mousedown', changeColor);
+    newCell.addEventListener('mouseup', upCheck);
+    newCell.addEventListener('mouseenter', enterCheck);
   }
   tableColumnNum++;
 }
@@ -50,12 +60,13 @@ removeColumn = function() {
   }
 }
 
-// Handles clicks on cells
+// Handles mousedown on cells
 changeColor = function(e) {
   console.log("Changing color of cell");
   let cell = e.target;
   let color = document.getElementById('mySelect').value;
   cell.setAttribute("bgcolor", color);
+  mouseclick = true;
 }
 
 // Fills all uncolored cells with currently selected color
@@ -79,4 +90,19 @@ clearAll = function() {
   }
 }
 
+// Activated on mouseup, changes mouse click variable to false
+upCheck = function(e) {
+  changeColor(e);
+  mouseclick = false;
+}
+
+// Check for mouse entering, changes color if mouse is down
+enterCheck = function(e) {
+  console.log(mouseclick)
+  if(mouseclick == true){
+    changeColor(e);
+  }
+}
+
+// Adds a cell to start with
 addColumn();
