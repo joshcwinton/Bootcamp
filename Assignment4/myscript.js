@@ -1,4 +1,6 @@
 let table = document.getElementById("myTable");
+let tableRowNum = 1;
+let tableColumnNum = 0;
 
 // Adds row to main table
 addRow = function() {
@@ -9,6 +11,7 @@ addRow = function() {
     let newCell = newrow.insertCell(0);
     newCell.addEventListener('click', changeColor);
   }
+  tableRowNum++;
 }
 
 // Adds column to main table
@@ -19,20 +22,31 @@ addColumn = function() {
     let newCell = rows[i].insertCell(0);
     newCell.addEventListener('click', changeColor);
   }
+  tableColumnNum++;
 }
 
 // Remove row from main Table
 removeRow = function() {
-  console.log("Removing row");
-  table.deleteRow(0);
+  if (tableRowNum > 1) {
+    console.log("Removing row");
+    table.deleteRow(0);
+    tableRowNum--;
+  } else {
+    console.log("Reached minimum rows");
+  }
 }
 
 // Remove column from main table
 removeColumn = function() {
-  console.log("Removing column");
   let rows = table.getElementsByTagName("TR");
-  for (let i = 0; i < rows.length; i++) {
-    rows[i].deleteCell(0);
+  if (tableColumnNum > 1) {
+    for (let i = 0; i < rows.length; i++) {
+      console.log("Removing column" + tableColumnNum);
+      rows[i].deleteCell(0);
+    }
+    tableColumnNum--;
+  } else {
+    console.log("Reached minimum columns");
   }
 }
 
@@ -50,7 +64,7 @@ fillUncolored = function() {
   let color = document.getElementById('mySelect').value;
   let cells = document.getElementsByTagName("TD");
   for (let i = 0; i < cells.length; i++) {
-    if((cells[i].getAttribute('bgcolor') == null)||(cells[i].getAttribute('bgcolor') == "white")){
+    if ((cells[i].getAttribute('bgcolor') == null) || (cells[i].getAttribute('bgcolor') == "white")) {
       cells[i].setAttribute("bgcolor", color);
     }
   }
@@ -61,7 +75,8 @@ clearAll = function() {
   console.log("Clearing all cells");
   let cells = document.getElementsByTagName("TD");
   for (let i = 0; i < cells.length; i++) {
-    // console.log(cells[i].getAttribute('bgcolor'));
     cells[i].setAttribute("bgcolor", "white");
   }
 }
+
+addColumn();
